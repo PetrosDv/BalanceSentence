@@ -1,0 +1,47 @@
+Planning my thinking view:
+After reading the problem/exercise I realized that I have to use a stack 
+to push and pop the bracket characters - (, ), [, ], {, } - from a sentence entered by a user.
+So..parsing the program one sentence, when it finds a bracket which opens - (, [, { - then it
+calls a push method to push this bracket into the stack. This motive continues until the program find a bracket
+which closes. Then the program calls the pop method to take the last opened bracket which has stored in
+and compare it with the current closed bracket. If these two are corresponding e.g ( & ) or [ & ] or { & },
+then program continues to run until the last character of the sentence. If in any spot there is not
+the correct match between brackets, then program terminates and appears a message: "Not a Balanced sentence" 
+On the contrary the program appears the message "You gave a balanced sentence".
+
+More analytically
+
+#-JavaStack CLASS-#
+
+So.. I construct a single class named it JavaStack, where I did all the necessary methods such as:
+the initialize constructor, the push method, the pop method and the empty method.
+
+I used 3 variables: one integer for the max size of the stack array, one integer indicator
+for showing the top position of the stack and an array with characters.
+I initialized parameter 'top' as 0, parameter 'maxSize' as n (where n takes value from main
+method) and finally I created an array made up from n characters.
+
+-Boolean method empty checks if my stack is empty. So when parameter 'top' is equal with 0 
+then method returns true, otherwise returns false.
+-Void method push must have a parameter - a character - which is an opened bracket. This is stored in stack.
+-Char method pop must return a char value that is an opened bracket from inside the stack. In pop method
+we check if stack is empty. If it is empty that means there is one more closed bracket, so the sentence
+is not balanced.
+
+
+#-AdvantageProblem CLASS-#
+
+In this class at first import the -java.util.Scanner- so that the user can write in console an give a sentence.
+-In the main method I create an Object named it newStack which has type of JavaStack. I give it the parameter 20
+as the max size of the sentence as far as it goes the max size of the stack.
+I declare a string variable for the user's sentence. The program accepts only a n-characters sentence where n has the value of 20,
+otherwise it asks again to give the permissible size. When size is accepted, the sentence is sent as a parameter to a method
+called checkBalance.
+-checkBalance gets as parameters the user's sentence and a type JavaStack object. It returns also a boolean value.
+I use 2 useful parameters, one integer i for my for-loop and one char type open_br in which is stored the last open bracket
+from the top of the stack. Then I check my sentence as I explained in my first thinking view.
+The result (true or false) is sent back to main, where it appears the suitable message.
+
+
+About the AdvantageProblemTesting.. I started creating the JUnit testing, but I stuck in the second parameter for testing
+the method checkBalance. I gave the first String parameter - a sentence - but the second parameter must be a type JavaStack Object..
